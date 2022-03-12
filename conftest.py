@@ -1,4 +1,6 @@
 import pytest
+# To test SMPT connection
+import smtplib
 
 @pytest.fixture
 def important_value():
@@ -29,3 +31,9 @@ def complete(together, happy):
 @pytest.fixture(autouse=True)
 def meaning_of_life():
     return 42   
+
+# To test SMPT connection
+
+@pytest.fixture(scope = "module")
+def smtp_connection():
+    return smtplib.SMTP("smtp.gmail.com", 587, timeout  =5)
